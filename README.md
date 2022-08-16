@@ -80,6 +80,6 @@ Test: "It should return the whole, original string."
 Code:
 const text = "You muppeteer!"; 
 const word = ""; 
-curseWordFilter(word, text);
+curseWordFilter(word, text); 
 Expected Output: "You muppeteer!" 
 

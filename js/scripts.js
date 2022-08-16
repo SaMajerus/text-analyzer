@@ -48,8 +48,8 @@ function curseWordFilter(blacklist, text) {   // **Lsn 27
 } 
 */ 
 function curseWordFilter(blacklist, text) {   // **Lsn 27 
-  const textArray = text.split(" "); 
+  //const textArray = text.split(" "); 
   //const cursesArray = blacklist.split(" ");
   console.log("Text -- in array form -- before filtering:  " + textArray);
-  return textArray; 
+  return text; 
 } 
