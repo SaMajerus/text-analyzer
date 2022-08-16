@@ -90,3 +90,9 @@ const word = "muppeteer";
 curseWordFilter(word, text); 
 Expected Output: "You !" [OR  "You"]
 
+Test: "It should return the a new string with all bad words removed."
+Code:
+const text = "You muppeteers ruin all our loopdaloop things all the way towards that biffaroni boyo, you zoinks!"; 
+const word = ["muppeteer", "zoinks", "loopdaloop", "biffaroni"]; 
+curseWordFilter(word, text); 
+Expected Output: "You ruin all our things all the way towards that boyo, you" 
