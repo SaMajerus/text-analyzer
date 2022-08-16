@@ -72,3 +72,14 @@ const word = "Red";
 numberOfOccurrencesInText(word, text);
 Expected Output: 3
 
+
+
+Describe: curseWordFilter() 
+
+Test: "It should return the whole, original string."
+Code:
+const text = "You muppeteer!"; 
+const word = ""; 
+curseWordFilter(word, text);
+Expected Output: "You muppeteer!" 
+

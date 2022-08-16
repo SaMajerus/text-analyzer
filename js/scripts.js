@@ -14,7 +14,7 @@ function wordCounter(text) {
   return wordCount; 
 } 
 
-function numberOfOccurrencesInText(word, text){    // **Lsn 26   
+function numberOfOccurrencesInText(word, text) {    // **Lsn 26   
 /*
   if (word === text) {  //Test 2  
     return 1;  
@@ -35,8 +35,21 @@ function numberOfOccurrencesInText(word, text){    // **Lsn 26
   return wordCount;  //Works for Tests 1-3. 
 }  
 
-
-function offensivesFilter(blacklist, text){   // **Lsn 27 
-
-
-}
+/*
+function curseWordFilter(blacklist, text) {   // **Lsn 27 
+  const textArray = text.split(" "); 
+  const cursesArray = blacklist.split(" ");
+  textArray.forEach(function(element){
+    if (element.toLowerCase().includes(cursesArray.toLowerCase())) {  //If current element matches the/a word in 'cursesArray'
+      textArray[element] = textArray[element].value - cursesArray[element].value; 
+    }
+  }); 
+  return textArray;  
+} 
+*/ 
+function curseWordFilter(blacklist, text) {   // **Lsn 27 
+  const textArray = text.split(" "); 
+  //const cursesArray = blacklist.split(" ");
+  console.log("Text -- in array form -- before filtering:  " + textArray);
+  return textArray; 
+} 
