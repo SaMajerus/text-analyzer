@@ -35,21 +35,30 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
   return wordCount;  //Works for Tests 1-3. 
 }  
 
-/*
+
 function curseWordFilter(blacklist, text) {   // **Lsn 27 
-  const textArray = text.split(" "); 
-  const cursesArray = blacklist.split(" ");
-  textArray.forEach(function(element){
-    if (element.toLowerCase().includes(cursesArray.toLowerCase())) {  //If current element matches the/a word in 'cursesArray'
-      textArray[element] = textArray[element].value - cursesArray[element].value; 
-    }
-  }); 
-  return textArray;  
-} 
-*/ 
-function curseWordFilter(blacklist, text) {   // **Lsn 27 
-  //const textArray = text.split(" "); 
-  //const cursesArray = blacklist.split(" ");
+  let textRes = []; 
+  let textArray = text.split(" "); 
   console.log("Text -- in array form -- before filtering:  " + textArray);
-  return text; 
+  //  const cursesArray = blacklist.split(" ");
+
+  textArray.forEach(function(element){
+    if (!(element.includes(blacklist.toLowerCase()))) {  //If current element matches the/a word in 'cursesArray'
+      console.log(element);
+      /*
+      textArray = textRes = textArray[element+1,textArray.length-1];  
+      console.log("textArray now contains:  " + textArray);
+      console.log("textRes now contains:  " + textRes); 
+      */ 
+      textRes.push(element); 
+      console.log("Nothing filtered out yet! ");
+    } else {
+      console.log("Filtered out  '" + blacklist + "'  at word " + element);
+    } 
+  }); 
+
+  console.log(textRes.toString()); 
+  return textRes.toString(); 
 } 
+
+

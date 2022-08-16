@@ -83,3 +83,10 @@ const word = "";
 curseWordFilter(word, text); 
 Expected Output: "You muppeteer!" 
 
+Test: "It should return the string with one word removed."
+Code:
+const text = "You muppeteer!"; 
+const word = "muppeteer"; 
+curseWordFilter(word, text); 
+Expected Output: "You !" [OR  "You"]
+
