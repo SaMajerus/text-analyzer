@@ -28,7 +28,7 @@ Expected Output: 2
 
 
 <!--[Lsn 26]--> 
-Describe: wordCounter() 
+Describe: numberOfOccurrencesInText() 
 
 Test: "It should return 0 occurrences of a word for an empty string."
 Code:
