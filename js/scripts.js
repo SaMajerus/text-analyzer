@@ -64,14 +64,19 @@ function boldpassage(word, text) {   // **Lsn 30
   } 
 
   const p = document.createElement("p"); 
-  if (word === text) {   //Test 3
-    const bold = document.createElement("strong"); 
-    bold.append(text); 
-    p.append(bold); 
-  } else {   //Test 2
-    p.append(text); 
-  } 
-  return p; 
+  let textArray = text.split(" ");  //Set-up for Test 4 
 
+  textArray.forEach(function(element) {  //Test 4
+    if (word === element) {   //[Also works for Test 3]
+      const bold = document.createElement("strong"); 
+      bold.append(text); 
+      p.append(bold); 
+    } else {   //[Also works for Test 2]
+      p.append(element); 
+    } 
+    p.append(" "); 
+  });
+
+  return p; 
 
 }
