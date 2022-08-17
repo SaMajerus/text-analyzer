@@ -127,6 +127,6 @@ Code:
 const array = ['You', 'are', 'a', 'muppeteer', 'in', 'first', 'class!']; 
 const skipThis = 3; 
 const afterSkip = 4; 
-skipShift(array, skipThis, afterSkip); 
+skipShift(array, skipThis); 
 Expected Output: ['You', 'are', 'a', 'in', 'first', 'class!'] 
 
