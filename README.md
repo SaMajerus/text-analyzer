@@ -138,3 +138,24 @@ const afterSkip = 4;
 skipShift(array, skipThis); 
 Expected Output: ['You', 'are', 'a', 'in', 'first', 'class!'] 
 
+
+
+
+
+<!--Lsn 30  [for the following Describe block]--> 
+Describe: boldPassage()
+
+Test: "It should return null if no word or text is entered."
+Code:
+const text = "";
+const word = "";
+boldPassage(word, text);
+Expected Output: null 
+
+Test: "It should return a non-matching word in a p tag."
+Code:
+const word = "hello";
+const text = "yo";
+boldPassage(word, text);
+Expected Output: <p>yo</p> 
+
