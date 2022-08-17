@@ -69,7 +69,7 @@ function boldpassage(word, text) {   // **Lsn 30
   textArray.forEach(function(element) {  //Test 4
     if (word === element) {   //[Also works for Test 3]
       const bold = document.createElement("strong"); 
-      bold.append(text); 
+      bold.append(element); 
       p.append(bold); 
     } else {   //[Also works for Test 2]
       p.append(element); 
