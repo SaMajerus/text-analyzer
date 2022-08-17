@@ -106,6 +106,9 @@ curseWordFilter(word, text);
 Expected Output: "You ruin all our things all the way towards that boyo, you" 
 
 
+<!--(Switched to doing TDD on 'skipShift' here, to assist with this function.    
+The tests for that function occur between the previous and next listed tests for this one.)--> 
+
 
 Test: "It should return the a new string with all bad words removed."
 Code:
@@ -113,3 +116,17 @@ const text = "You muppeteers ruin all our loopdaloop things all the way towards 
 const word = ["muppeteer", "zoinks", "loopdaloop", "biffaroni"]; 
 curseWordFilter(word, text); 
 Expected Output: "You ruin all our things all the way towards that boyo, you" 
+
+
+
+
+
+Describe: skipShift() 
+
+Test: "It should exit the loop once it gets to the array's to-be-skipped/'Skipee' index, and print out the part of the array that precedes it (the Skipee)."
+Code:
+const array = ['You', 'are', 'a', 'muppeteer', 'in', 'first', 'class!']; 
+const skipThis = 3; 
+const afterSkip = 4; 
+skipShift(array, skipThis, afterSkip); 
+Expected Output: ['You', 'are', 'a'] 
