@@ -21,7 +21,10 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
   } 
   return 0; //Tests 1 & 3. 
 */
-  
+  if (word.trim().length === 0) {   //Test 6  [**Lsn 28]
+    return 0;
+  }  
+
   const textArray = text.split(" "); 
   let wordCount = 0; 
   textArray.forEach(function(element) {  //Test 4
