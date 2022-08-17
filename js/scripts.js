@@ -79,14 +79,6 @@ function curseWordFilter(blacklist, text) {   // **Lsn 27
 } 
 
 
-
-/*   **Building off of idea from earlier (copy-pasted from above -- starts at line 64, see line 60 and earlier for hopefully-fuller context):  
-  //.. 
-  //Create a function called 'SkipNShift' that starts at a given (to-be-skipped) array index, and do this to those that come after:  shift each index left by 1. 
-  //I'd have pass in an array containing indices that come before the given index, in order to append the modified end-half to it & return the new array...
-  //But that would work! 
-*/
-
 function skipShift(arrRef, skipThisInd) {  //Accepts args as follows: 'reference array', 'index to-be-skipped'   
   let newArr = []; //Initialization of array that will contain everything except the 'skipee' index.  
   let currItInd = 0; 
@@ -103,6 +95,31 @@ function skipShift(arrRef, skipThisInd) {  //Accepts args as follows: 'reference
   return newArr; 
 }
 
+
+
+/*   **Building off of idea from earlier (copy-pasted from above -- starts at line 64, see line 60 and earlier for hopefully-fuller context):  
+  //.. 
+  //Create a function called 'SkipNShift' that starts at a given (to-be-skipped) array index, and do this to those that come after:  shift each index left by 1. 
+  //I'd have pass in an array containing indices that come before the given index, in order to append the modified end-half to it & return the new array...
+  //But that would work! 
+*/
+/*
+function skipShift(arrRef, skipThisInd) {  //Accepts args as follows: 'reference array', 'index to-be-skipped'   
+  let newArr = []; //Initialization of array that will contain everything except the 'skipee' index.  
+  let currItInd = 0; 
+  arrRef.forEach(function(element) { 
+    currItInd = arrRef.indexOf(element); 
+    if(currItInd === skipThisInd){ 
+      return;  //Skip to next element.   **(Calvin reminded me that 'return' with no args does the same as 'continue' would in a while loop.   -SM, 8-17-2022, 12:08pm.)
+    }else{
+      newArr.push(element); 
+    }
+  }); 
+  console.log(newArr); 
+
+  return newArr; 
+}
+*/
 
 
 

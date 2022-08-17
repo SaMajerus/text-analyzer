@@ -129,3 +129,4 @@ const skipThis = 3;
 const afterSkip = 4; 
 skipShift(array, skipThis, afterSkip); 
 Expected Output: ['You', 'are', 'a', 'in', 'first', 'class!'] 
+
