@@ -38,7 +38,7 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
 
 function curseWordFilter(blacklist, text) {   // **Lsn 27 
   let textRes = []; 
-  let textArray = text.split(" "); 
+  const textArray = text.split(" "); 
   console.log("Text -- in array form -- before filtering:  " + textArray); 
   console.log("Words that will be filtered/omitted:  " + blacklist); 
   
@@ -47,44 +47,35 @@ function curseWordFilter(blacklist, text) {   // **Lsn 27
     textArray.forEach(function(element) {
       if ((element.toLowerCase()).includes(badwordCurr)) {  //If current element does match the/a word in 'blacklist'
         console.log(element); 
-     
+        
         /*
         textArray = textRes = textArray[element+1,textArray.length-1];  
         console.log("textArray now contains:  " + textArray);
         console.log("textRes now contains:  " + textRes); 
         */ 
 
-        textArray = textArray.filter(element => !(element === badwordCurr)); 
-        
-        /*
-        //Idea.... -SM, ~10:35am, 8-17-2022.
-        let currInd = textArray.indexOf(element);
-        let nextInd = currInd + 1; 
-        textArray[currInd] = textArray[nextInd]; 
-        //OR!!: create a function called 'SkipNShift' that starts at a given array index, and do this to those that come after:  shift each index left by 1. 
-        // I'd have to pass in an array containing the indices that come before the to-be-skipped index, in order to append the modified end-half to it and return the new array.
-        */
+        textArray = skipShift(textArray, textArray.indexOf(element)); 
+        console.log("Currently at " + element + "in textArray.  Just filtered out  '" + badwordCurr + "' ");  
 
-        console.log("Currently at " + element + "in textArray.  Just filtered out  '" + badwordCurr + "' "); 
 
       } else {   //Current element isn't a blacklisted word. 
-        //textRes.push(element); 
-        //console.log("Didn't omit anything here!  Pushed " + element + " to result array."); 
-        console.log("Didn't omit anything here!  (At word  '" + element + "'  in textArray, moving on to next)."); 
+        console.log("Didn't omit anything here!  Pushed the current word -- " + element + " -- to result array, moving onto the next one."); 
       } 
 
       //console.log("Current 'textArray': " + textArray); 
-      console.log("Current 'textArray' (at end of this iteration ): " + textArray);
+      console.log("Current 'textArray' (at end of this pass): " + textArray);
+
     }); 
-    console.log("Current 'textRes' (at end of this iteration ): " + textRes); 
-    console.log(textArray);  
+
+    //console.log("Current 'textRes' (at end of this iteration): " + textRes); 
+    console.log("Current 'textArray' (at end of this iteration): " + textArray);  
+
   }); 
   
   console.log(textArray); 
   console.log(textRes);
-  return textRes.toString(); 
-
-  
+  //return textRes.toString(); 
+  return textArray.toString();
 } 
 
 
@@ -96,19 +87,20 @@ function curseWordFilter(blacklist, text) {   // **Lsn 27
   //But that would work! 
 */
 
-function skipShift(arrRef, skipThisInd, nextInd) {  //Accepts args as follows: 'reference array', 'to-be-skipped/skipee index', 'index after skipee'.  
-  let preSkipee = []; //Initialization of array that will contain everything before the 'skipee' index. 
-  let postSkipee = [];  //Initialization of array that will contain everything after the 'skipee' index. 
+function skipShift(arrRef, skipThisInd) {  //Accepts args as follows: 'reference array', 'index to-be-skipped'   
+  let newArr = []; //Initialization of array that will contain everything except the 'skipee' index.  
   let currItInd = 0; 
   arrRef.forEach(function(element) { 
     currItInd = arrRef.indexOf(element); 
     if(currItInd === skipThisInd){ 
-      exit;  //Exit current loop. 
+      return;  //Skip to next element.   **(Calvin reminded me that 'return' with no args does the same as 'continue' would in a while loop.   -SM, 8-17-2022, 12:08pm.)
     }else{
-      preSkipee.push(element); 
+      newArr.push(element); 
     }
   }); 
+  console.log(newArr); 
 
+  return newArr; 
 }
 
 

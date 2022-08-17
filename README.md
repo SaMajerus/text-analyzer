@@ -107,16 +107,15 @@ Expected Output: "You ruin all our things all the way towards that boyo, you"
 
 
 <!--(Switched to doing TDD on 'skipShift' here, to assist with this function.    
-The tests for that function occur between the previous and next listed tests for this one.)--> 
+The tests for that function occur before the next Test below.)--> 
 
 
-Test: "It should return the a new string with all bad words removed."
+Test: "It should return the new string (in array form or not, doesn't matter) with all bad words removed."
 Code:
 const text = "You muppeteers ruin all our loopdaloop things all the way towards that biffaroni boyo, you zoinks!"; 
 const word = ["muppeteer", "zoinks", "loopdaloop", "biffaroni"]; 
 curseWordFilter(word, text); 
 Expected Output: "You ruin all our things all the way towards that boyo, you" 
-
 
 
 
@@ -129,4 +128,4 @@ const array = ['You', 'are', 'a', 'muppeteer', 'in', 'first', 'class!'];
 const skipThis = 3; 
 const afterSkip = 4; 
 skipShift(array, skipThis, afterSkip); 
-Expected Output: ['You', 'are', 'a'] 
+Expected Output: ['You', 'are', 'a', 'in', 'first', 'class!'] 
