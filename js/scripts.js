@@ -39,26 +39,35 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
 function curseWordFilter(blacklist, text) {   // **Lsn 27 
   let textRes = []; 
   let textArray = text.split(" "); 
-  console.log("Text -- in array form -- before filtering:  " + textArray);
+  console.log("Text -- in array form -- before filtering:  " + textArray); 
+  console.log("Words that will be filtered:  " + blacklist); 
   //  const cursesArray = blacklist.split(" ");
+  blacklist.forEach(function(curse) {
+    console.log("Starting weed out of the word  '" + curse + "'."); 
 
-  textArray.forEach(function(element) {
-    if ((element.toLowerCase()).includes(blacklist)) {  //If current element does match the/a word in 'blacklist'
-      console.log(element); 
-      /*
-      textArray = textRes = textArray[element+1,textArray.length-1];  
-      console.log("textArray now contains:  " + textArray);
-      console.log("textRes now contains:  " + textRes); 
-      */ 
-      textRes = textArray.filter(element => element != blacklist); 
-      console.log("Filtered out  '" + blacklist + "'  at word " + element);   
-    } else {   //Current element isn't a blacklisted word. 
-      //textRes.push(element); 
-      console.log("Nothing filtered out this go-round!  Pushed " + element + " to result array."); 
-    } 
-  }); 
-
-  console.log(textRes.toString()); 
+    textArray.forEach(function(element) {
+      if ((element.toLowerCase()).includes(blacklist)) {  //If current element does match the/a word in 'blacklist'
+        console.log(element); 
+        /*
+        textArray = textRes = textArray[element+1,textArray.length-1];  
+        console.log("textArray now contains:  " + textArray);
+        console.log("textRes now contains:  " + textRes); 
+        */ 
+        textArray = textArray.filter(element => element !== curse); 
+        console.log("Currently at " + element + "in textArray.  Just filtered out  '" + blacklist + "' ");   
+      } else {   //Current element isn't a blacklisted word. 
+        //textRes.push(element); 
+        //console.log("Didn't omit anything here!  Pushed " + element + " to result array."); 
+        console.log("Didn't omit anything here!  (At word  '" + element + "'  in textArray, moving on to next)."); 
+      } 
+      console.log("Current 'textArray': " + textArray);
+      console.log("Current 'textRes' array: " + textRes); 
+    }); 
+    console.log("Current 'textArray' (at end of this iteration ): " + textRes); 
+  });
+  console.log(blacklist);
+  console.log(textArray); 
+  console.log(textRes); 
   return textRes.toString(); 
 } 
 
