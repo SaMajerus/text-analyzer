@@ -159,3 +159,10 @@ const text = "yo";
 boldPassage(word, text);
 Expected Output: <p>yo</p> 
 
+Test: "It should return a matching word in a strong tag."
+Code:
+const word = "hello";
+const text = "hello";
+boldPassage(word, text);
+Expected Output: <p><strong>hello</strong></p>
+

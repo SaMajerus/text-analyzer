@@ -63,10 +63,14 @@ function boldpassage(word, text) {   // **Lsn 30
     return null; 
   } 
 
-
-  //Next three lines:  Test 2
   const p = document.createElement("p"); 
-  p.append(text); 
+  if (word === text) {   //Test 3
+    const bold = document.createElement("strong"); 
+    bold.append(text); 
+    p.append(bold); 
+  } else {   //Test 2
+    p.append(text); 
+  } 
   return p; 
 
 
