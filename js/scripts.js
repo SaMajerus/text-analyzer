@@ -1,9 +1,22 @@
-// Business Logic 
+/*     Utility Logic     */ 
+
+function isEmpty(testString) {   // **Lsn 31
+  return (testString.trim().length === 0);
+}
+
+
+
+
+
+
+
+/*     Business Logic     */ 
 
 function wordCounter(text) {  
-  if(text.trim().length === 0){ //Test 4 [also works for Test 3] 
+  if(isEmpty(text)){   //Test 4 [also works for Test 3].    (***Modified w/ Lsn 31) 
     return 0; 
   } 
+
   let wordCount = 0; //Initializes counter 'wordCount' at 0. 
   const textArray = text.split(" "); //Set-up for Test 2 
   textArray.forEach(function(word) { //Test 2 [also works for Test 1] 
@@ -21,7 +34,8 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
   } 
   return 0; //Tests 1 & 3. 
 */
-  if (word.trim().length === 0) {   //Test 6  [**Lsn 28]
+
+  if (isEmpty(word)) {   //Test 6  [*Lsn 28]     (***Modified w/ Lsn 31)
     return 0;
   }  
 
@@ -41,7 +55,7 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
 
 
 
-//UI Logic 
+/*     UI Logic     */ 
 
 function handleFormSubmission() {   // **Lsn 28 
   event.preventDefault();
@@ -50,7 +64,14 @@ function handleFormSubmission() {   // **Lsn 28
   const wordCount = wordCounter(passage);
   const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
   document.getElementById("total-count").innerText = wordCount;
-  document.getElementById("selected-count").innerText = occurrencesOfWord;
+  document.getElementById("selected-count").innerText = occurrencesOfWord; 
+
+  let boldedPassage = boldPassage(word, passage);  
+  if (boldedPassage) {
+    document.querySelector("div#bolded-passage").append(boldedPassage);
+  } else {
+    document.querySelector("div#bolded-passage").innerText = null;
+  }
 }
 
 window.addEventListener("load", function() {
@@ -59,7 +80,7 @@ window.addEventListener("load", function() {
 
 
 function boldpassage(word, text) {   // **Lsn 30 
-  if((text.trim().length === 0) || (word.trim().length === 0)) {   //Test 1 
+  if(isEmpty(word) || isEmpty(text)) {   //Test 1     (***Modified w/ Lsn 31)
     return null; 
   } 
 
@@ -74,9 +95,10 @@ function boldpassage(word, text) {   // **Lsn 30
     } else {   //[Also works for Test 2]
       p.append(element); 
     } 
-    if (index !== (textArray.length - 1)) {
+    if (index !== (textArray.length - 1)) { 
       p.append(" "); 
     } 
   });
   return p; 
 }
+
