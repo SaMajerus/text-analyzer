@@ -36,122 +36,22 @@ function numberOfOccurrencesInText(word, text) {    // **Lsn 26
 }  
 
 
-function curseWordFilter(blacklist, text) {   // **Lsn 27 
-  let textRes = []; 
-  const textArray = text.split(" "); 
-  console.log("Text -- in array form -- before filtering:  " + textArray); 
-  console.log("Words that will be filtered/omitted:  " + blacklist); 
-  
-  blacklist.forEach(function(curse) {
-    let badwordCurr = String(blacklist[curse]); 
-    textArray.forEach(function(element) {
-      if ((element.toLowerCase()).includes(badwordCurr)) {  //If current element does match the/a word in 'blacklist'
-        console.log(element); 
-        
-        /*
-        textArray = textRes = textArray[element+1,textArray.length-1];  
-        console.log("textArray now contains:  " + textArray);
-        console.log("textRes now contains:  " + textRes); 
-        */ 
-
-        textArray = skipShift(textArray, textArray.indexOf(element)); 
-        console.log("Currently at " + element + "in textArray.  Just filtered out  '" + badwordCurr + "' ");  
 
 
-      } else {   //Current element isn't a blacklisted word. 
-        console.log("Didn't omit anything here!  Pushed the current word -- " + element + " -- to result array, moving onto the next one."); 
-      } 
+//UI Logic 
 
-      //console.log("Current 'textArray': " + textArray); 
-      console.log("Current 'textArray' (at end of this pass): " + textArray);
-
-    }); 
-
-    //console.log("Current 'textRes' (at end of this iteration): " + textRes); 
-    console.log("Current 'textArray' (at end of this iteration): " + textArray);  
-
-  }); 
-  
-  console.log(textArray); 
-  console.log(textRes);
-  //return textRes.toString(); 
-  return textArray.toString();
-} 
-
-
-function skipShift(arrRef, skipThisInd) {  //Accepts args as follows: 'reference array', 'index to-be-skipped'   
-  let newArr = []; //Initialization of array that will contain everything except the 'skipee' index.  
-  let currItInd = 0; 
-  arrRef.forEach(function(element) { 
-    currItInd = arrRef.indexOf(element); 
-    if(currItInd === skipThisInd){ 
-      return;  //Skip to next element.   **(Calvin reminded me that 'return' with no args does the same as 'continue' would in a while loop.   -SM, 8-17-2022, 12:08pm.)
-    }else{
-      newArr.push(element); 
-    }
-  }); 
-  console.log(newArr); 
-
-  return newArr; 
+function handleFormSubmission() {
+  event.preventDefault();
+  const passage = document.getElementById("text-passage").value;
+  const word = document.getElementById("word").value;
+  const wordCount = wordCounter(passage);
+  const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
+  document.getElementById("total-count").innerText = wordCount;
+  document.getElementById("selected-count").innerText = occurrencesOfWord;
 }
 
+window.addEventListener("load", function() {
+  document.querySelector("form#word-counter").addEventListener("submit", handleFormSubmission);
+});
 
-
-/*   **Building off of idea from earlier (copy-pasted from above -- starts at line 64, see line 60 and earlier for hopefully-fuller context):  
-  //.. 
-  //Create a function called 'SkipNShift' that starts at a given (to-be-skipped) array index, and do this to those that come after:  shift each index left by 1. 
-  //I'd have pass in an array containing indices that come before the given index, in order to append the modified end-half to it & return the new array...
-  //But that would work! 
-*/
-/*
-function skipShift(arrRef, skipThisInd) {  //Accepts args as follows: 'reference array', 'index to-be-skipped'   
-  let newArr = []; //Initialization of array that will contain everything except the 'skipee' index.  
-  let currItInd = 0; 
-  arrRef.forEach(function(element) { 
-    currItInd = arrRef.indexOf(element); 
-    if(currItInd === skipThisInd){ 
-      return;  //Skip to next element.   **(Calvin reminded me that 'return' with no args does the same as 'continue' would in a while loop.   -SM, 8-17-2022, 12:08pm.)
-    }else{
-      newArr.push(element); 
-    }
-  }); 
-  console.log(newArr); 
-
-  return newArr; 
-}
-*/
-
-
-
-/*
-function curseWordFilter(blacklist, text) {   // **Lsn 27 
-  let textRes = []; 
-  let textArray = text.split(" "); 
-  console.log("Text -- in array form -- before filtering:  " + textArray);
-  
-  console.log("Words that will be filtered:  " + blacklist); 
-
-  blacklist.forEach(function(curse) {
-    console.log("Starting weed out of the word  '" + curse + "'."); 
-    textArray.forEach(function(element) { 
-      if (!(element.toLowerCase().includes(blacklist[curse]))) {  //If current element doesn't match a 'curse' in 'blacklist' 
-        console.log("Current word in text: " + element);
-        textRes.push(element); 
-        console.log("Nothing filtered out yet! "); 
-      } else {  //If current element DOES match a 'curse' in 'blacklist'
-        let indCurse = textArray.indexOf(element); 
-        textRes=textArray.splice(indCurse, indCurse+1); 
-        console.log("Filtered out  '" + curse + "'  , which followed from word " + element-1); 
-        console.log("Current 'textRes' array: " + textRes.toString()); 
-      } 
-      textArray=textRes; //Syncs 'textArray' with updated array contents (which is stored in variable 'textRes'). 
-    }); 
-    console.log("Current 'textRes' array: " + textRes.toString()); 
-
-  }); 
-
-  console.log(textRes); 
-  return textRes.toString(); 
-} 
-*/ 
 
