@@ -40,23 +40,53 @@ function curseWordFilter(blacklist, text) {   // **Lsn 27
   let textRes = []; 
   let textArray = text.split(" "); 
   console.log("Text -- in array form -- before filtering:  " + textArray);
-  
-  console.log("Words that will be filtered:  " + blacklist);
+  //  const cursesArray = blacklist.split(" ");
 
+  textArray.forEach(function(element) {
+    if ((element.toLowerCase()).includes(blacklist)) {  //If current element does match the/a word in 'blacklist'
+      console.log(element); 
+      /*
+      textArray = textRes = textArray[element+1,textArray.length-1];  
+      console.log("textArray now contains:  " + textArray);
+      console.log("textRes now contains:  " + textRes); 
+      */ 
+      textRes = textArray.filter(element => element != blacklist); 
+      console.log("Filtered out  '" + blacklist + "'  at word " + element);   
+    } else {   //Current element isn't a blacklisted word. 
+      //textRes.push(element); 
+      console.log("Nothing filtered out this go-round!  Pushed " + element + " to result array."); 
+    } 
+  }); 
+
+  console.log(textRes.toString()); 
+  return textRes.toString(); 
+} 
+
+
+
+
+/*
+function curseWordFilter(blacklist, text) {   // **Lsn 27 
+  let textRes = []; 
+  let textArray = text.split(" "); 
+  console.log("Text -- in array form -- before filtering:  " + textArray);
+  
+  console.log("Words that will be filtered:  " + blacklist); 
 
   blacklist.forEach(function(curse) {
     console.log("Starting weed out of the word  '" + curse + "'."); 
     textArray.forEach(function(element) { 
-      if (!(element.toLowerCase().includes(blacklist[curse]))) {  //If current element matches a 'curse' in 'blacklist' 
+      if (!(element.toLowerCase().includes(blacklist[curse]))) {  //If current element doesn't match a 'curse' in 'blacklist' 
         console.log("Current word in text: " + element);
         textRes.push(element); 
-        console.log("Nothing filtered out yet! ");
-      } else {
-        textRes.push(element);
-        textRes.splice(textRes.length-1, 1); 
+        console.log("Nothing filtered out yet! "); 
+      } else {  //If current element DOES match a 'curse' in 'blacklist'
+        let indCurse = textArray.indexOf(element); 
+        textRes=textArray.splice(indCurse, indCurse+1); 
         console.log("Filtered out  '" + curse + "'  , which followed from word " + element-1); 
-        console.log("Current 'textRes' array: " + textRes.toString());    
+        console.log("Current 'textRes' array: " + textRes.toString()); 
       } 
+      textArray=textRes; //Syncs 'textArray' with updated array contents (which is stored in variable 'textRes'). 
     }); 
     console.log("Current 'textRes' array: " + textRes.toString()); 
 
@@ -65,5 +95,5 @@ function curseWordFilter(blacklist, text) {   // **Lsn 27
   console.log(textRes); 
   return textRes.toString(); 
 } 
-
+*/ 
 
